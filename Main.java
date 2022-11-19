@@ -1,46 +1,21 @@
 /*
-* The program gets a triangle
-* and it calculates the stats of a triangle.
+* The program gets a sand input
+* and it calculates the image of an hourglass.
 *
 * @author  Jackson Naufal
 * @version 1.0
 * @since   2020-11-08
 *
-* This is a Triangle program
+* This is a hour glass program
 */
 
 import java.util.Scanner;
 /**
- * This is the main Triangle Class.
+ * This is the main hour glass.
  * Class Main
  */
 
 final class Main {
-
-    /**
-     * This is 3.
-     */
-    public static final int THREE = 3;
-
-    /**
-     * This is %.4f.
-     */
-    public static final String POINTMM = "%.4f cm²";
-
-    /**
-     * This is another.
-     */
-    public static final String RAD = "%.4f rad";
-
-    /**
-     * This is another.
-     */
-    public static final String CM = "%.4f cm";
-
-    /**
-     * This is cm.
-     */
-    public static final String CENI = " cm";
 
     /**
     * Prevent instantiation.
@@ -57,6 +32,32 @@ final class Main {
     }
 
     /**
+     * This is the hour glass function.
+     *
+     * @param sand this is the sand.
+     * @param mid this is the middle.
+     */
+    static void hourglass(final int sand, final int mid) {
+
+        String hrGlass = "";
+        int counter1;
+        int counter2;
+
+        for (counter1 = 0; counter1 < mid; counter1++) {
+            hrGlass += " ";
+        }
+
+        for (counter2 = 0; counter2 < sand; counter2++) {
+            hrGlass += "* ";
+        }
+        System.out.println(hrGlass);
+
+        if (sand > 1) {
+            hourglass(sand - 1, mid + 1);
+        }
+        System.out.println(hrGlass);
+    }
+    /**
     * The starting main() function.
     *
     * @param args No args will be used
@@ -65,72 +66,15 @@ final class Main {
     public static void main(final String[] args) {
 
         final Scanner firstInput = new Scanner(System.in);
-        final Scanner secondInput = new Scanner(System.in);
-        final Scanner thirdInput = new Scanner(System.in);
-
         try {
+            System.out.println("This is an hour glass program!");
+            System.out.print("Enter your size: ");
+            final int amount = firstInput.nextInt();
 
-            System.out.println("Enter your triangles sides(cm)");
-            System.out.print("Enter your first side: ");
-            final double sideA = firstInput.nextInt();
-            System.out.print("Enter your second side: ");
-            final double sideB = secondInput.nextInt();
-            System.out.print("Enter your third side: ");
-            final double sideC = thirdInput.nextInt();
-
-            if (sideA <= 0 || sideB <= 0 || sideC <= 0) {
+            if (amount <= 0) {
                 System.out.println("Invalid Input, Number to small!");
             } else {
-
-                // this is a triangle program
-                final Triangle triangle = new Triangle(sideA, sideB, sideC);
-
-                triangle.status();
-
-                System.out.println("\nThe three sides were");
-                System.out.println("Side A ---> " + triangle.getSideA() + CENI);
-                System.out.println("Side B ---> " + triangle.getSideB() + CENI);
-                System.out.println("Side C ---> " + triangle.getSideC() + CENI);
-
-                System.out.println("\nThe triangle type is below!");
-                System.out.println("The shape is a " + triangle.triangleName());
-
-                System.out.println("\nThe Semiperimeter and Area are below!");
-                System.out.println("The semiperimeter is "
-                                + triangle.semiperimeter() + CENI);
-
-                System.out.println("The area is " + String.format(POINTMM,
-                                        triangle.area()));
-
-                System.out.println("\nThe angles are below!");
-                System.out.println("Angle A is " + String.format(RAD,
-                                        triangle.angles(2)));
-                System.out.println("Angle B is " + String.format(RAD,
-                                        triangle.angles(THREE)));
-                System.out.println("Angle C is " + String.format(RAD,
-                                        triangle.angles(1)));
-
-                System.out.println("\nThe heights are below!");
-                System.out.println("The height of side A is "
-                                + String.format(CM,
-                                        triangle.height(1)));
-                System.out.println("The height of side B is "
-                                + String.format(CM,
-                                        triangle.height(2)));
-                System.out.println("The height of side C is "
-                                + String.format(CM,
-                                        triangle.height(THREE)));
-
-                System.out.println("\nInner circle radius below!");
-                System.out.println("The inner circle radius is "
-                                + String.format(CM,
-                                        triangle.innerCircleRadius()));
-
-                System.out.println("\nThe circumcircle is below!");
-                System.out.println("The circum circle radius is "
-                                + String.format(CM,
-                                        triangle.circumRadiusTriangle()));
-
+                hourglass(amount, 0);
             }
         } catch (java.util.InputMismatchException ex) {
             System.out.println("Invalid Input");
