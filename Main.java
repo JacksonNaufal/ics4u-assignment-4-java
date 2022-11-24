@@ -11,7 +11,7 @@
 import java.util.Scanner;
 
 /**
- * This is the main hour glass.
+ * This is the main hourglass.
  * Class Main
  */
 final class Main {
@@ -27,11 +27,10 @@ final class Main {
 
     private Main() {
         throw new IllegalStateException("Cannot be instantiated");
-
     }
 
     /**
-     * This is the hour glass function.
+     * This is the hourglass function.
      *
      * @param sand this is the sand.
      * @param mid this is the middle.
@@ -69,7 +68,7 @@ final class Main {
         // Scanner for first input.
         final Scanner firstInput = new Scanner(System.in);
 
-        //What the program is and Input.
+        // What the program is and Input.
         System.out.println("This is an hourglass program!");
         System.out.print("Enter your amount: ");
 
